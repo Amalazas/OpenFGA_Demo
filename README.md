@@ -1,6 +1,6 @@
 # OpenFGA_Demo
-### Autorzy: Mateusz Asimowicz, Jakub Cichocki, Jan Prokop, Aleksander Pytel 
-##### Termin: sem. zimowy 2024, piątek 16:45 <a nie 17:00 ? xd>  grupa <różne, nie wiem co wpisać>
+### Authors: Mateusz Asimowicz, Jakub Cichocki, Jan Prokop, Aleksander Pytel 
+##### sem. zimowy 2024 | piątek 16:45 <a nie 17:00 ? xd> | grupa <różne, nie wiem co wpisać>
 
 ---
 
