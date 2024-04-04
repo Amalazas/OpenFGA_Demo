@@ -1,6 +1,6 @@
 # OpenFGA_Demo
 ### Authors: Mateusz Asimowicz, Jakub Cichocki, Jan Prokop, Aleksander Pytel 
-##### sem. zimowy 2024 | piątek 16:45 <a nie 17:00 ? xd> | grupa <różne, nie wiem co wpisać>
+##### sem. zimowy 2024 | piątek 17:00 | grupa 3
 
 ---
 
@@ -33,4 +33,17 @@ The core components of the systems will be:
 - an actor that requests a resource (invalid), be it a non-existing one, or without necessary permissions, in a specified amount
 - (optional) a logging component that will make it easier to collect results from after running the test suite
 - (optional) test suite orchestrator sending a “start” message to systems being a part of the given use case test
+
+## 4. Solution architecture
+## 5. Environment configuration description
+## 6. Installation method
+## 7. How to reproduce - step by step
+#### 1. Infrastructure as Code approach
+## 8. Demo deployment steps:
+#### 1. Configuration set-up
+#### 2. Data preparation
+#### 3. Execution procedure
+#### 4. Results presentation
+## 9. Summary – conclusions
+## 10. References
 
