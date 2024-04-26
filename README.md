@@ -39,6 +39,13 @@ The core components of the systems will be:
 ![1714131783692](https://github.com/Amalazas/OpenFGA_Demo/assets/56168780/f1661d95-8812-4bed-b6aa-aa77532361a3)
 
 ## 5. Environment configuration description
+
+
+
+We aim to have the test suite be runnable with [Docker](https://www.docker.com/) - this section will be expanded upon with all needed prerequisites once we have the code in place.
+
+The current plan is to have all the components be runnable with [Docker Compose](https://docs.docker.com/compose/).
+
 ## 6. Installation method
 ## 7. How to reproduce - step by step
 #### 1. Infrastructure as Code approach
