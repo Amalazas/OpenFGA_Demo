@@ -46,7 +46,7 @@ app.get('/getThingOpenFGA', (req, res) => {
     res.send(`checked resource`);
 })
 
-app.get('getThing', (req, res) => {
+app.get('/getThing', (req, res) => {
     let username = req.query['username'];
     currentTime = new Date();
     

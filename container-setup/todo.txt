@@ -1,0 +1,9 @@
+client:
+    - add option to switch endpoint we ask for ('/switchEndpoint')
+    - add option to switch username we use ('/switchUser')
+
+server:
+    - integrate with openFGA on '/getThingOpenFGA' (see commented-out code)
+
+openFGA:
+    - prepare a model (maybe a curl command that creates a prepared one?)
