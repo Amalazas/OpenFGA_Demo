@@ -1,6 +1,7 @@
 {
   "type": "module",
   "dependencies": {
+    "@openfga/sdk": "^0.4.0",
     "express": "^4.19.2",
     "fetch": "^1.1.0",
     "node-fetch": "^3.3.2"
