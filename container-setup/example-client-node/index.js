@@ -6,10 +6,10 @@ const port = 5000;
 // how many checks against FGA/not-FGA did we manage to do
 let checks = 0;
 
-let username = "john"
+let username = "alice"
 let startTime = new Date();
 let endTime = new Date();
-let endpoint = 'http://localhost:4000/getThing'
+let endpoint = 'http://localhost:4000/getThingOpenFGA'
 
 app.post('/setExperimentTime', (req, res) => {
     startTime = new Date(req.query['startTime']);

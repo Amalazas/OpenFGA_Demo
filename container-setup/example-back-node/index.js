@@ -5,12 +5,14 @@ const port = 4000;
 //TODO - connect FGA, add request time measuring
 const { OpenFgaClient } = require('@openfga/sdk');
 
+const FGA_API_URL = 'http://localhost:8080';
+
 // // Initialize the SDK with no auth - see "How to setup SDK client" for more options
-// const fgaClient = new OpenFgaClient({
-//   apiUrl: process.env.FGA_API_URL, // required, e.g. https://api.fga.example
-//   storeId: process.env.FGA_STORE_ID,
-//   authorizationModelId: process.env.FGA_MODEL_ID, // Optional, can be overridden per request
-// });
+ const fgaClient = new OpenFgaClient({
+   apiUrl: FGA_API_URL, // required, e.g. https://api.fga.example
+   storeId: "01HYVGVBDAGCF8A8VSHEGJFVC7",//process.env.FGA_STORE_ID; hardcoded for now
+   //authorizationModelId: process.env.FGA_MODEL_ID, // Optional, can be overridden per request
+ });
 
 let hits = 0;
 
@@ -35,12 +37,15 @@ app.get('/getThingOpenFGA', (req, res) => {
         //in request we pass user name, eventually other stuff - hardcoded for now
         //checking if user anne has relation can_read with testDocument
 
-        // const fgaResult = await fgaClient.check({
-        //     user: `user:${username}`,
-        //     relation: "can_read",
-        //     object: "testDocument"
-        // });
-        checks++;
+        const fgaResult = fgaClient.check({
+            user: 'user:' + username,
+            relation: 'owner',
+            object: 'document:doc1'
+        })
+        if (fgaResult.allowed) {
+            checks++;
+        }
+        
         console.log("in time window")
         res.send(`checked resource`);
     } else {
