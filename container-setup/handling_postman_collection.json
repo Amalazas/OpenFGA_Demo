@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "54e4853c-0d56-44c6-b023-f8c0b85b8974",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Set experiment time on client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/setExperimentTime?startTime=2024-05-26T11:40:05.384Z&endTime=2024-05-26T11:41:05.384Z",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"setExperimentTime"
+					],
+					"query": [
+						{
+							"key": "startTime",
+							"value": "2024-05-26T11:40:05.384Z",
+							"description": "start time in ISO string"
+						},
+						{
+							"key": "endTime",
+							"value": "2024-05-26T11:41:05.384Z",
+							"description": "end time in ISO string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set test endpoint on client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/setExperimentEndpoint?endpoint=http://localhost:4000/getThingOpenFGA",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"setExperimentEndpoint"
+					],
+					"query": [
+						{
+							"key": "endpoint",
+							"value": "http://localhost:4000/getThingOpenFGA"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set username on client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/setUsername?username=jack",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"setUsername"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "jack"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set experiment time on server",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/setExperimentTime?startTime=2024-05-26T11:40:05.384Z&endTime=2024-05-26T11:41:05.384Z",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"setExperimentTime"
+					],
+					"query": [
+						{
+							"key": "startTime",
+							"value": "2024-05-26T11:40:05.384Z",
+							"description": "start time in ISO string"
+						},
+						{
+							"key": "endTime",
+							"value": "2024-05-26T11:41:05.384Z",
+							"description": "end time in ISO string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get request amount realized on server",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4000/showCheckCount",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"showCheckCount"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

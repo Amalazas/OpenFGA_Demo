@@ -41,9 +41,11 @@ app.get('/getThingOpenFGA', (req, res) => {
         //     object: "testDocument"
         // });
         checks++;
+        console.log("in time window")
+        res.send(`checked resource`);
+    } else {
+        res.send('endpoint closed - not in the time window')
     }
-
-    res.send(`checked resource`);
 })
 
 app.get('/getThing', (req, res) => {
@@ -52,9 +54,10 @@ app.get('/getThing', (req, res) => {
     
     if(currentTime > startTime && currentTime < endTime){
         checks++;
+        res.send(`checked resource`);
+    } else {
+        res.send('endpoint closed - not in the time window')
     }
-
-    res.send(`checked resource`);
 })
 
 app.get('/showCheckCount', (req, res) => {
