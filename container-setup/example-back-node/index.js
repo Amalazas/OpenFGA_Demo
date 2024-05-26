@@ -29,7 +29,7 @@ app.post('/testincr', (req, res) => {
     res.send("posted");
 })
 
-app.get('/getThingOpenFGA', (req, res) => {
+app.get('/getThingOpenFGA', async (req, res) => {
     let username = req.query['username'];
     currentTime = new Date();
     
@@ -37,7 +37,7 @@ app.get('/getThingOpenFGA', (req, res) => {
         //in request we pass user name, eventually other stuff - hardcoded for now
         //checking if user anne has relation can_read with testDocument
 
-        const fgaResult = fgaClient.check({
+        const fgaResult = await fgaClient.check({
             user: 'user:' + username,
             relation: 'owner',
             object: 'document:doc1'
