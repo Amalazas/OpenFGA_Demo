@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c5f2f74d-f2a5-4555-9bd4-225d8be34f19",
+		"_postman_id": "28b29c7b-8cd5-4b62-9c9a-ad7da254f182",
 		"name": "openFGA project",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26439797"
@@ -398,6 +398,59 @@
 								"stores",
 								"01HYVGVBDAGCF8A8VSHEGJFVC7",
 								"check"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test-Orchestrator",
+			"item": [
+				{
+					"name": "Start the test",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:6000/scheduleTest?startOffset=5&endOffset=10",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"scheduleTest"
+							],
+							"query": [
+								{
+									"key": "startOffset",
+									"value": "5",
+									"description": "in seconds from `now`"
+								},
+								{
+									"key": "endOffset",
+									"value": "10",
+									"description": "in seconds from `now`"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Collect results from all the services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:6000/collectResults",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"collectResults"
 							]
 						}
 					},
