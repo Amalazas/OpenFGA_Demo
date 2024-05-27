@@ -14,20 +14,11 @@ const FGA_API_URL = 'http://localhost:8080';
    //authorizationModelId: process.env.FGA_MODEL_ID, // Optional, can be overridden per request
  });
 
-let hits = 0;
-
 // how many checks against FGA/not-FGA did we manage to do
 let checks = 0;
 
 let startTime = new Date();
 let endTime = new Date(Date.now() + 2*60*1000);
-
-app.get('/test', (req,res) => res.send(`hello + ${hits}`));
-
-app.post('/testincr', (req, res) => {
-    hits++;
-    res.send("posted");
-})
 
 app.get('/getThingOpenFGA', async (req, res) => {
     let username = req.query['username'];
