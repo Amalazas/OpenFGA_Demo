@@ -1,401 +1,409 @@
 {
 	"info": {
-		"_postman_id": "ed40ad00-2ace-4f49-bfc3-99a9d62ce0c2",
+		"_postman_id": "c5f2f74d-f2a5-4555-9bd4-225d8be34f19",
 		"name": "openFGA project",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26439797"
 	},
 	"item": [
 		{
-			"name": "Set experiment time on client",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "localhost:4000/setExperimentTime?startTime=2024-04-24T20:03:38.982Z&endTime=2024-04-24T20:05:38.982Z",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"setExperimentTime"
-					],
-					"query": [
-						{
-							"key": "startTime",
-							"value": "2024-04-24T20:03:38.982Z"
+			"name": "Server",
+			"item": [
+				{
+					"name": "Set experiment time on server",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/setExperimentTime?startTime=2024-04-24T20:03:38.982Z&endTime=2024-04-24T20:05:38.982Z",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"setExperimentTime"
+							],
+							"query": [
+								{
+									"key": "startTime",
+									"value": "2024-04-24T20:03:38.982Z"
+								},
+								{
+									"key": "endTime",
+									"value": "2024-04-24T20:05:38.982Z"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get request amount realized on server Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/showCheckCount",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"showCheckCount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Get request amount realized on client",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/checks",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"checks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Switch user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/switchUser?user=check",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"switchUser"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "check"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Switch endpoint",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/switchEndpoint?endpoint=ep1",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"switchEndpoint"
+							],
+							"query": [
+								{
+									"key": "endpoint",
+									"value": "ep1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set experiment time on client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/setExperimentTime?startTime=2024-04-24T20:03:38.982Z&endTime=2024-04-24T20:05:38.982Z",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"setExperimentTime"
+							],
+							"query": [
+								{
+									"key": "startTime",
+									"value": "2024-04-24T20:03:38.982Z"
+								},
+								{
+									"key": "endTime",
+									"value": "2024-04-24T20:05:38.982Z"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OpenFGA",
+			"item": [
+				{
+					"name": "Create a store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"openfga-demo\"\r\n}"
 						},
-						{
-							"key": "endTime",
-							"value": "2024-04-24T20:05:38.982Z"
+						"url": {
+							"raw": "http://localhost:8080/stores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stores"
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Set experiment time on server",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "localhost:4000/setExperimentTime?startTime=2024-04-24T20:03:38.982Z&endTime=2024-04-24T20:05:38.982Z",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"setExperimentTime"
-					],
-					"query": [
-						{
-							"key": "startTime",
-							"value": "2024-04-24T20:03:38.982Z"
+					},
+					"response": []
+				},
+				{
+					"name": "Show store list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
-						{
-							"key": "endTime",
-							"value": "2024-04-24T20:05:38.982Z"
+						"url": {
+							"raw": "http://localhost:8080/stores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stores"
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get request amount realized on server Copy",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:4000/showCheckCount",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"showCheckCount"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get request amount realized on client",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:5000/showChecksCount",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"showChecksCount"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Switch user",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "localhost:5000/switchUser?user=check",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"switchUser"
-					],
-					"query": [
-						{
-							"key": "user",
-							"value": "check"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete store",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"openfga-demo\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/stores/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stores",
+								""
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Switch endpoint",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "localhost:5000/switchEndpoint?endpoint=ep1",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"switchEndpoint"
-					],
-					"query": [
-						{
-							"key": "endpoint",
-							"value": "ep1"
+					},
+					"response": []
+				},
+				{
+					"name": "Show authorization models",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/stores/01HYVF2AZCRCT4GWM0B0SH5Z16/authorization-models",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stores",
+								"01HYVF2AZCRCT4GWM0B0SH5Z16",
+								"authorization-models"
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create a store",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"openfga-demo\"\r\n}"
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/stores",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"stores"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Show store list",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:8080/stores",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"stores"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete store",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"openfga-demo\"\r\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8080/stores/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"stores",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Show authorization models",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "default"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/stores/01HYVF2AZCRCT4GWM0B0SH5Z16/authorization-models",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"stores",
-						"01HYVF2AZCRCT4GWM0B0SH5Z16",
-						"authorization-models"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create authorization model",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"schema_version\": \"1.1\",\r\n    \"type_definitions\": [\r\n        {\r\n            \"type\": \"user\"\r\n        },\r\n        {\r\n            \"type\": \"document\",\r\n            \"relations\": {\r\n                \"reader\": {\r\n                    \"this\": {}\r\n                },\r\n                \"writer\": {\r\n                    \"this\": {}\r\n                }\r\n            }\r\n        }\r\n    ]\r\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8080/stores/01HYVF2AZCRCT4GWM0B0SH5Z16/authorization-models",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"stores",
-						"01HYVF2AZCRCT4GWM0B0SH5Z16",
-						"authorization-models"
-					],
-					"query": [
-						{
-							"key": "",
-							"value": null,
-							"disabled": true
+				{
+					"name": "Create authorization model",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"schema_version\": \"1.1\",\r\n    \"type_definitions\": [\r\n        {\r\n            \"type\": \"user\"\r\n        },\r\n        {\r\n            \"type\": \"document\",\r\n            \"relations\": {\r\n                \"reader\": {\r\n                    \"this\": {}\r\n                },\r\n                \"writer\": {\r\n                    \"this\": {}\r\n                }\r\n            }\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/stores/01HYVF2AZCRCT4GWM0B0SH5Z16/authorization-models",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stores",
+								"01HYVF2AZCRCT4GWM0B0SH5Z16",
+								"authorization-models"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Write new tuple (rule)",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content",
-						"value": "application/json",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n        \"writes\": {\r\n            \"tuple_keys\": [\r\n              {\r\n                \"user\": 'alice',\r\n                \"relation\": 'owner',\r\n                \"object\": 'document:doc1'\r\n              }\r\n            ]\r\n          },\r\n          \"authorization_model_id\": 01HYVGNTJ7DEJ5QS29JX3F1A96\r\n    }"
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/stores/01HYVGVBDAGCF8A8VSHEGJFVC7/write",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"stores",
-						"01HYVGVBDAGCF8A8VSHEGJFVC7",
-						"write"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Tuple changes - tuple list",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content",
-						"value": "application/json",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n        \"writes\": {\r\n            \"tuple_keys\": [\r\n              {\r\n                \"user\": 'alice',\r\n                \"relation\": 'owner',\r\n                \"object\": 'document:doc1'\r\n              }\r\n            ]\r\n          },\r\n          \"authorization_model_id\": 01HYVGNTJ7DEJ5QS29JX3F1A96\r\n    }"
+				{
+					"name": "Tuple changes - tuple list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"writes\": {\r\n            \"tuple_keys\": [\r\n              {\r\n                \"user\": 'alice',\r\n                \"relation\": 'owner',\r\n                \"object\": 'document:doc1'\r\n              }\r\n            ]\r\n          },\r\n          \"authorization_model_id\": 01HYVGNTJ7DEJ5QS29JX3F1A96\r\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/stores/01HYVGVBDAGCF8A8VSHEGJFVC7/changes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stores",
+								"01HYVGVBDAGCF8A8VSHEGJFVC7",
+								"changes"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/stores/01HYVGVBDAGCF8A8VSHEGJFVC7/changes",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"stores",
-						"01HYVGVBDAGCF8A8VSHEGJFVC7",
-						"changes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Check access",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content",
-						"value": "application/json",
-						"type": "default"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"tuple_key\": {\r\n    \"user\": \"user:alice\",\r\n    \"relation\": \"owner\",\r\n    \"object\": \"document:doc1\"\r\n  }\r\n}"
+				{
+					"name": "Write new tuple (rule)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"writes\": {\r\n            \"tuple_keys\": [\r\n              {\r\n                \"user\": 'alice',\r\n                \"relation\": 'owner',\r\n                \"object\": 'document:doc1'\r\n              }\r\n            ]\r\n          },\r\n          \"authorization_model_id\": 01HYVGNTJ7DEJ5QS29JX3F1A96\r\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/stores/01HYVGVBDAGCF8A8VSHEGJFVC7/write",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stores",
+								"01HYVGVBDAGCF8A8VSHEGJFVC7",
+								"write"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/stores/01HYVGVBDAGCF8A8VSHEGJFVC7/check",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"stores",
-						"01HYVGVBDAGCF8A8VSHEGJFVC7",
-						"check"
-					]
+				{
+					"name": "Check access",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tuple_key\": {\r\n    \"user\": \"user:alice\",\r\n    \"relation\": \"owner\",\r\n    \"object\": \"document:doc1\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/stores/01HYVGVBDAGCF8A8VSHEGJFVC7/check",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stores",
+								"01HYVGVBDAGCF8A8VSHEGJFVC7",
+								"check"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
