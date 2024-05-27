@@ -1,0 +1,44 @@
+uruchomić serwer:
+- wejść w folder z serwerem
+- npm install
+- node index.js
+- serwer powinien działać na porcie 4000
+(potem wystarczy tylko node index.js)
+
+uruchomić klienta:
+- wejść w folder z klientem
+- npm install
+- node index.js
+- klient działa na porcie 5000
+
+uruchomić test-orchestrator:
+- wejść w folder z test-orchestrator
+- npm install
+- node index.js
+- test-orchestrator działa na porcie 6000
+
+uruchomić OpenFGA:
+- wejść w folder openfga
+- docker-compose up
+- wejść w folder z serwerem
+- uruchomić przykładowy skrypt do tworzenia struktury (node create_model.js)
+- można wejść na localhost:3000/playground i upewnić się, że model został utworzony i że jest 2 użytkowników - alice+bob
+- trzeba ustawić store id w linii 13 pliku index.js serwera - można dostać store id z endpointu localhost:8080/stores
+
+teraz trzeba wysłać request do test-orchestrator na /scheduleTest - wtedy klient zacznie pytać, serwer zacznie odpowiadać (i liczyć ile udało się zrealizować)
+jak dojdzie do końca okresu, to klient powinien przestać pytać, serwer - liczyć (jak ustawimy sobie okno 2 min to można policzyć ile req/s średnio wyszło np)
+
+Narazie zahardcodowany jest przypadek z dostępem do zasobu (allowed=true)
+
+polecam postmana do ogarniania tego - kolekcja dostarczona w repo została rozszerzona o możliwości manipulacji na OpenFGA 
+- stworzone w oparciu o API OpenFGA
+
+jak ustawicie czas na serwerze - resetuje liczenie
+
+można odpalić jako obraz dockerowy - serwer ma to chyba ogarnięte już, klient nie ale powinien działać analogicznie (ze zmianą portu tylko)
+
+
+TODO:
+
+- Dodać do klienta opcję zmiany odpytywanego zasobu i operacji - można połączyć z istniejącym już /switchUser
+- Przenieść tworzenie struktury z osobnego skryptu (Axios) do serwera - jest to o tyle istotne, że teraz musimy mieć zahardcodowany storeId - inną opcją jest jakiś config file
