@@ -45,9 +45,8 @@ app.listen(port, () => {
 async function sendCheck() {
     if(Date.now() > startTime && Date.now() < endTime) {
         const res = await fetch(`${endpoint}?username=${username}`);
-        console.log(res);
         checks++;
-        console.log(checks);
+        console.log('code:' + res.status + ' checks: ' + checks);
     }
     setTimeout(sendCheck, 1)
 }
