@@ -28,7 +28,7 @@ const createModel = async (storeId) => {
           {
             "type": "document",
             "relations": {
-              "reader": {
+              "viewer": {
                 "this": {}
               },
               "owner": {
@@ -37,7 +37,7 @@ const createModel = async (storeId) => {
             },
             "metadata": {
               "relations": {
-                "reader": {
+                "viewer": {
                   "directly_related_user_types": [
                     {
                       "type": "user"
