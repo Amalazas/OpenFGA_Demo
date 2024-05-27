@@ -1,72 +1,74 @@
 const axios = require('axios');
 
-const apiUrl = 'http://localhost:8080'
+const apiUrl = 'http://localhost:8080';
 
 const createStore = async () => {
     try {
-        const response = axios.post(`${apiUrl}/stores`, {
+        const response = await axios.post(`${apiUrl}/stores`, {
             name: 'openfga-demo'
         }, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-        return response.id;
+        return response.data.id;
     } catch (error) {
-        console.error("Cannot create store: ", error);
+        console.error("Cannot create store: ", error.response ? error.response.data : error.message);
         return null;
     }
 };
 
 const createModel = async (storeId) => {
+    console.log('entered');
     const model = {
         "schema_version": "1.1",
         "type_definitions": [
-          {
-            "type": "user"
-          },
-          {
-            "type": "document",
-            "relations": {
-              "viewer": {
-                "this": {}
-              },
-              "owner": {
-                "this": {}
-              }
+            {
+                "type": "user"
             },
-            "metadata": {
-              "relations": {
-                "viewer": {
-                  "directly_related_user_types": [
-                    {
-                      "type": "user"
+            {
+                "type": "document",
+                "relations": {
+                    "viewer": {
+                        "this": {}
+                    },
+                    "owner": {
+                        "this": {}
                     }
-                  ]
                 },
-                "owner": {
-                  "directly_related_user_types": [
-                    {
-                      "type": "user"
+                "metadata": {
+                    "relations": {
+                        "viewer": {
+                            "directly_related_user_types": [
+                                {
+                                    "type": "user"
+                                }
+                            ]
+                        },
+                        "owner": {
+                            "directly_related_user_types": [
+                                {
+                                    "type": "user"
+                                }
+                            ]
+                        }
                     }
-                  ]
                 }
-              }
             }
-          }
         ]
-      };
+    };
 
     try {
-        axios.post(`${apiUrl}/stores/${storeId}/authorization-models`, model, {
+        const response = await axios.post(`${apiUrl}/stores/${storeId}/authorization-models`, model, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
         console.log('Authorization model created');
-        return response.authorization_model_id;
+        return response.data.authorization_model_id;
     } catch (error) {
-        console.error('Error creating model:', error);
+        console.error('Error creating model:', error.response ? error.response.data : error.message);
+        return null;
     }
 };
 
@@ -74,44 +76,44 @@ const createTuple = async (storeId, modelId, user, relation, object) => {
     const tuple = {
         "writes": {
             "tuple_keys": [
-              {
-                "user": user,
-                "relation": relation,
-                "object": object
-              }
+                {
+                    "user": `user:${user}`,
+                    "relation": relation,
+                    "object": object
+                }
             ]
-          },
-          "authorization_model_id": modelId
+        },
+        "authorization_model_id": modelId
     }
     try {
-        axios.post(`${apiUrl}/stores/${storeId}/write`, tuple, {
+        await axios.post(`${apiUrl}/stores/${storeId}/write`, tuple, {
             headers: {
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             }
-          });
-          console.log(`Tuple created: ${user} ${relation} ${object}`);
+        });
+        console.log(`Tuple created: ${user} ${relation} ${object}`);
     } catch (error) {
-        console.error('Error creating tuple:', error);
+        console.error('Error creating tuple:', error.response ? error.response.data : error.message);
     }
 };
 
 const checkAccess = async (storeId, user, relation, object) => {
     const tuple = {
         "tuple_key": {
-            "user": "user" + user,
+            "user": `user:${user}`,
             "relation": relation,
             "object": object
-          }
+        }
     }
     try {
-        const response = axios.post(`${apiUrl}/stores/${storeId}/check`, tuple, {
+        const response = await axios.post(`${apiUrl}/stores/${storeId}/check`, tuple, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-          console.log(`Access check: ${user} ${relation} ${object} - Allowed: ${response.data.allowed}`);
+        console.log(`Access check: ${user} ${relation} ${object} - Allowed: ${response.data.allowed}`);
     } catch (error) {
-        console.error('Error checking access:', error);
+        console.error('Error checking access:', error.response ? error.response.data : error.message);
     }
 };
 
@@ -127,5 +129,6 @@ const main = async () => {
     await checkAccess(storeId, 'bob', 'viewer', 'document:doc1');
 }
 
-main();
-    
+main().then(() => {
+  console.log('looks good');
+});
