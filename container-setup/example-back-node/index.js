@@ -27,7 +27,6 @@ app.get('/getThingOpenFGA', async (req, res) => {
     if(currentTime > startTime && currentTime < endTime){
         //in request we pass user name, eventually other stuff - hardcoded for now
         //checking if user anne has relation can_read with testDocument
-
         const fgaResult = await fgaClient.check({
             user: 'user:' + username,
             relation: 'owner',

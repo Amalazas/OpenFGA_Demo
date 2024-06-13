@@ -65,8 +65,7 @@ const createModel = async (storeId) => {
             }
         });
         console.log('Authorization model created');
-        console.log(response.data)
-        console.log('Store id: ' + response.data.authorization_model_id)
+        return response.data.authorization_model_id
     } catch (error) {
         console.error('Error creating model:', error.response ? error.response.data : error.message);
         return null;
