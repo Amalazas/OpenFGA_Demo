@@ -10,7 +10,7 @@ let checks = 0;
 let username = "alice"
 let startTime = new Date();
 let endTime = new Date();
-let endpoint = 'http://localhost:4000/getThingOpenFGA'
+let endpoint = 'http://back-1:4000/getThingOpenFGA'
 
 app.post('/setExperimentTime', (req, res) => {
     startTime = new Date(req.query['startTime']);

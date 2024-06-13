@@ -2,12 +2,26 @@ import { addSeconds } from 'date-fns';
 import express from 'express';
 import axios from 'axios';
 
+const ports = process.env.PORTS
+const portList = ports.split(";")
+console.log("Client port list: " + portList)
+
 const app = express();
 const port = 6000;
+let idx = 1
+const serviceString = 'client-'
 
-const collectingEndpoints = ['http://localhost:4000/showCheckCount', 'http://localhost:5000/checks']
+let collectingEndpoints = ['http://back-1:4000/showCheckCount']
+let schedulingEndpoints = ['http://back-1:4000/setExperimentTime']
+for (const port of portList) {
+    console.log(port)
+    collectingEndpoints.push(`http://${serviceString}${idx}:${port}/checks`)
+    schedulingEndpoints.push(`http://${serviceString}${idx}:${port}/setExperimentTime`)
+    idx++
+}
 
-const schedulingEndpoints = ['http://localhost:4000/setExperimentTime', 'http://localhost:5000/setExperimentTime'];
+
+
 
 app.get('/collectResults', async (req, res) => {
     
@@ -65,6 +79,11 @@ app.post('/scheduleTest', async (req, res) => {
         res.status(500).send('Error scheduling tests');
     }
 });
+
+app.post('/setStoreId', (req, res) => {
+    axios.post(`http://back-1:4000/setStoreId?storeId=${req.query['storeId']}`)
+    res.send(`Set storeId to ${req.query['storeId']}`)
+})
 
 app.listen(port, () => {
     console.log(`Test orchestrator listening on port ${port}`);

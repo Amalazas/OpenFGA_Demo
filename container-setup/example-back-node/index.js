@@ -5,10 +5,10 @@ const port = 4000;
 //TODO - connect FGA, add request time measuring
 const { OpenFgaClient } = require('@openfga/sdk');
 
-const FGA_API_URL = 'http://localhost:8080';
+const FGA_API_URL = 'http://openfga:8080';
 
 // // Initialize the SDK with no auth - see "How to setup SDK client" for more options
- const fgaClient = new OpenFgaClient({
+ let fgaClient = new OpenFgaClient({
    apiUrl: FGA_API_URL, // required, e.g. https://api.fga.example
    storeId: "01HYVGVBDAGCF8A8VSHEGJFVC7",//process.env.FGA_STORE_ID; hardcoded for now
    //authorizationModelId: process.env.FGA_MODEL_ID, // Optional, can be overridden per request
@@ -68,6 +68,15 @@ app.post('/setExperimentTime', (req, res) => {
     checks = 0;
 
     res.send(`Set experiment for ${startTime} to ${endTime}`)
+})
+
+app.post('/setStoreId', (req, res) => {
+    fgaClient = new OpenFgaClient({
+        apiUrl: FGA_API_URL, // required, e.g. https://api.fga.example
+        storeId: req.query['storeId'],
+        //authorizationModelId: process.env.FGA_MODEL_ID, // Optional, can be overridden per request
+    });
+    res.send(`Set storeId to ${req.query['storeID']}`)
 })
 
 app.listen(port, () => {

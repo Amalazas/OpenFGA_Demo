@@ -10,26 +10,38 @@ services:
       - PORT=5000
     ports:
       - "5000:5000"
+    networks:
+      - openfga
   client-2:
     build: "example-client-node/"
     environment:
       - PORT=5001
     ports:
-      - "5001:5001" 
+      - "5001:5001"
+    networks:
+      - openfga 
   client-3:
     build: "example-client-node/"
     environment:
       - PORT=5002
     ports:
       - "5002:5002"
+    networks:
+      - openfga
   back-1:
     build: "example-back-node/"
     ports:
       - "4000:4000"
+    networks:
+      - openfga
   orchestrator:
     build: "test-orchestrator/"
     ports:
       - "6000:6000"
+    environment:
+      - PORTS=5000;5001;5002
+    networks:
+      - openfga
   postgres:
     image: postgres:14
     container_name: postgres
