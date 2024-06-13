@@ -14,7 +14,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:4000/setExperimentTime?startTime=2024-04-24T20:03:38.982Z&endTime=2024-04-24T20:05:38.982Z",
+							"raw": "localhost:4000/setExperimentTime?startTime=2024-04-24T20:03:38.982Z&endTime=2025-04-24T20:05:38.982Z",
 							"host": [
 								"localhost"
 							],
@@ -29,7 +29,7 @@
 								},
 								{
 									"key": "endTime",
-									"value": "2024-04-24T20:05:38.982Z"
+									"value": "2025-04-24T20:05:38.982Z"
 								}
 							]
 						}
@@ -131,7 +131,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/setExperimentTime?startTime=2024-04-24T20:03:38.982Z&endTime=2024-04-24T20:05:38.982Z",
+							"raw": "localhost:5000/setExperimentTime?startTime=2024-04-24T20:03:38.982Z&endTime=2025-04-24T20:05:38.982Z",
 							"host": [
 								"localhost"
 							],
@@ -146,7 +146,7 @@
 								},
 								{
 									"key": "endTime",
-									"value": "2024-04-24T20:05:38.982Z"
+									"value": "2025-04-24T20:05:38.982Z"
 								}
 							]
 						}
@@ -384,10 +384,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"tuple_key\": {\r\n    \"user\": \"user:alice\",\r\n    \"relation\": \"owner\",\r\n    \"object\": \"document:doc1\"\r\n  }\r\n}"
+							"raw": "{\r\n  \"tuple_key\": {\r\n    \"user\": \"user:alice\",\r\n    \"relation\": \"owner\",\r\n    \"object\": \"document:doc1\"\r\n  },\r\n  \"authorization_model\": \"01J09DGFYE3STJ3QFWA0PTE887\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/stores/01HYVGVBDAGCF8A8VSHEGJFVC7/check",
+							"raw": "http://localhost:8080/stores/01J09E71RPQM4RRFF7M2KH4W5E/check",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -395,8 +395,29 @@
 							"port": "8080",
 							"path": [
 								"stores",
-								"01HYVGVBDAGCF8A8VSHEGJFVC7",
+								"01J09E71RPQM4RRFF7M2KH4W5E",
 								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/stores/01J09DTHJ25E136W1GA8TZBKJ4/authorization-models/01J09DTHJDMRDC9FEM2ABTFVJG",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stores",
+								"01J09DTHJ25E136W1GA8TZBKJ4",
+								"authorization-models",
+								"01J09DTHJDMRDC9FEM2ABTFVJG"
 							]
 						}
 					},
@@ -458,8 +479,25 @@
 				{
 					"name": "Set tested storeId",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:6000/setStoreId?storeId=01J09F077S9PDXEZ084QMYQPAB",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"setStoreId"
+							],
+							"query": [
+								{
+									"key": "storeId",
+									"value": "01J09F077S9PDXEZ084QMYQPAB",
+									"description": "storeId of created test store"
+								}
+							]
+						}
 					},
 					"response": []
 				}
