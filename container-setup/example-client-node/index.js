@@ -1,7 +1,21 @@
 import fetch from 'node-fetch';
 import express from 'express';
 const app = express();
-const port = 5000;
+
+
+// Checks for --port and if it has a value
+const portIndex = process.argv.indexOf('--port');
+let portValue;
+
+if (portIndex > -1) {
+  // Retrieve the value after --custom
+  portValue = process.argv[portIndex + 1];
+}
+
+const port = (portValue || 5000);
+
+
+
 
 // how many checks against FGA/not-FGA did we manage to do
 let checks = 0;
