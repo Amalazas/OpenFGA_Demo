@@ -11,6 +11,7 @@ const createStore = async () => {
                 'Content-Type': 'application/json'
             }
         });
+        console.log("Store id: " + response.data.id)
         return response.data.id;
     } catch (error) {
         console.error("Cannot create store: ", error.response ? error.response.data : error.message);
