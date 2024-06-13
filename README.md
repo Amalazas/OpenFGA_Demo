@@ -121,5 +121,7 @@ While OpenFGA introduces significant overhead compared to endpoints which do not
   
 ## 10. References
 https://openfga.dev/ - official OpenFGA site - auth tool being tested in the demo
+
 https://www.docker.com/ - official Docker site - used for containerization of the test system components
+
 https://nodejs.org/en - official Node site - used for our backend and client implementation + basic tooling
