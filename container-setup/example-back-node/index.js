@@ -36,7 +36,7 @@ app.get('/getThingOpenFGA', async (req, res) => {
             checks++;
         }
         
-        console.log("in time window")
+        // console.log("in time window")
         res.send(`checked resource`);
     } else {
         res.send('endpoint closed - not in the time window')
@@ -44,7 +44,6 @@ app.get('/getThingOpenFGA', async (req, res) => {
 })
 
 app.get('/getThing', (req, res) => {
-    let username = req.query['username'];
     currentTime = new Date();
     
     if(currentTime > startTime && currentTime < endTime){

@@ -47,9 +47,9 @@ async function sendCheck() {
     if(Date.now() > startTime && Date.now() < endTime) {
         const res = await fetch(`${endpoint}?username=${username}`);
         checks++;
-        console.log('code:' + res.status + ' checks: ' + checks);
+        // console.log('code:' + res.status + ' checks: ' + checks);
     }
-    setTimeout(sendCheck, 1)
+    setTimeout(sendCheck, 0)
 }
 
 setTimeout(sendCheck, 100)
