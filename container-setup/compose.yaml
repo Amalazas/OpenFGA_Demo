@@ -1,0 +1,81 @@
+version: '3.8'
+
+networks:
+  openfga:
+
+services:
+  client-1:
+    build: "example-client-node/"
+    environment:
+      - PORT=5000
+    ports:
+      - "5000:5000"
+  client-2:
+    build: "example-client-node/"
+    environment:
+      - PORT=5001
+    ports:
+      - "5001:5001" 
+  client-3:
+    build: "example-client-node/"
+    environment:
+      - PORT=5002
+    ports:
+      - "5002:5002"
+  back-1:
+    build: "example-back-node/"
+    ports:
+      - "4000:4000"
+  orchestrator:
+    build: "test-orchestrator/"
+    ports:
+      - "6000:6000"
+  postgres:
+    image: postgres:14
+    container_name: postgres
+    networks:
+      - openfga
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  migrate:
+    depends_on:
+      postgres:
+        condition: service_healthy
+    image: openfga/openfga:latest
+    container_name: migrate
+    command: migrate
+    environment:
+      - OPENFGA_DATASTORE_ENGINE=postgres
+      - OPENFGA_DATASTORE_URI=postgres://postgres:password@postgres:5432/postgres?sslmode=disable
+    networks:
+      - openfga
+
+  openfga:
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    image: openfga/openfga:latest
+    container_name: openfga
+    environment:
+      - OPENFGA_DATASTORE_ENGINE=postgres
+      - OPENFGA_DATASTORE_URI=postgres://postgres:password@postgres:5432/postgres?sslmode=disable
+      - OPENFGA_LOG_FORMAT=json
+    command: run
+    networks:
+      - openfga
+    ports:
+      # Needed for the http server
+      - "8080:8080"
+      # Needed for the grpc server (if used)
+      - "8081:8081"
+      # Needed for the playground (Do not enable in prod!)
+      - "3000:3000"

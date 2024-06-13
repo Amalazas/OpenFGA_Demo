@@ -1,5 +1,8 @@
 from node:14-alpine
 
+ARG port
+ENV PORT=${port}
+
 WORKDIR /usr/src/app
 
 COPY package*.json ./
@@ -8,6 +11,4 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 5000
-
-CMD [ "node", "index.js", "--port", "5000"]
+CMD ["sh", "-c", "node index.js"]
