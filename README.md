@@ -109,11 +109,29 @@ For the results we have decided to run the test suite multiple times in various 
 
 #### 3. Execution procedure
 
-how we did the tests
+The tests were conducted on a Destkop PC running Windows 10
+
+<img src="img/TestPC.png" alt="image" width="800" height="auto">
+
+Each of the tests was started using test orchestrator by calling it's API from Postman
+
+<img src="img/PostmanTest.png" alt="image" width="800" height="auto">
+
+We have run total of 90 tests - 10 tests per each of 9 setups.
+We have compared request handling for 1, 3 and 10 clients in situations where the OpenFGA requests are valid, invalid or where the OpenFGA is not used at all (as if using ping).
 
 #### 4. Results presentation
 
-results
+All of the requests in the tests were handled by a single server using an OpenFGA server for authorization.
+Compared to no-authorization-setup the time needed for each request when using OpenFGA at least doubled and almost tripled in case of the 10 client setup.
+Handling invalid requests compared to valid requests using OpenFGA was slightly quicker although more testing needs to be done before we could say that with certainity.
+
+<img src="img/1client.png" alt="image" width="800" height="auto">
+
+<img src="img/3clients.png" alt="image" width="800" height="auto">
+
+<img src="img/10clients.png" alt="image" width="800" height="auto">
+
 
 ## 9. Summary – conclusions
 
